@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Your Details</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #00b09b, #96c93d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            color: #555;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 0.9rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        select:focus, button:focus {
+            border-color: #00b09b;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 176, 155, 0.6);
+        }
+
+        button {
+            background-color: #00b09b;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #008d74;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            form {
+                padding: 1.5rem;
+            }
+
+            select, button {
+                font-size: 0.95rem;
+                padding: 0.75rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <form action="/progress" method="POST">
+        <label for="engineeringYear">Engineering Year:</label>
+        <select name="engineeringYear" id="engineeringYear" required>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+        </select>
+
+        <label for="domainOfInterest">Domain of Interest:</label>
+        <select name="domainOfInterest" id="domainOfInterest" required>
+            <option value="Web Development">Web Development</option>
+            <option value="App Development">App Development</option>
+            <option value="Data Structures">Data Structures</option>
+            <option value="Computer Networks">Computer Networks</option>
+            <option value="Operating System">Operating System</option>
+           
+        </select>
+
+        <label for="languageMode">Preferred Language:</label>
+        <select name="languageMode" id="languageMode" required>
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
