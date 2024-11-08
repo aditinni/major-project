@@ -1,334 +1,474 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Digital Guide</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <style>
-        /* Base styling */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-            transition: background-color 0.3s, color 0.3s;
-        }
+      /* Base styling */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: #ffffff;
+        transition: background-color 0.3s, color 0.3s;
+      }
 
-        /* Flexbox container styling */
-        .flex {
-            display: flex;
-            min-height: 100vh;
-        }
+      /* Flexbox container styling */
+      .flex {
+        display: flex;
+        min-height: 100vh;
+      }
 
-        .right {
-            flex-grow: 1;
-            padding: 20px;
-        }
+      .right {
+        flex-grow: 1;
+        padding: 20px;
+      }
 
-        /* Navbar and header */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background-color: #333;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
+      /* Navbar and header */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #333;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
 
-        nav button,
-        nav input[type="button"] {
-            background-color: #555;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
+      nav button,
+      nav input[type="button"] {
+        background-color: #555;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
 
-        nav a.logout {
-            color: white;
-            text-decoration: none;
-        }
+      nav a.logout {
+        color: white;
+        text-decoration: none;
+      }
 
-        /* Accordion styling */
-        .accordion {
-            background-color: #444;
-            color: white;
-            cursor: pointer;
-            padding: 15px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 18px;
-            margin-top: 15px;
-            border-radius: 8px;
-            transition: background-color 0.3s, color 0.3s;
-        }
+      /* Accordion styling */
+      .accordion {
+        background-color: #444;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 18px;
+        margin-top: 15px;
+        border-radius: 8px;
+        transition: background-color 0.3s, color 0.3s;
+      }
 
-        .accordion.active,
-        .accordion:hover {
-            background-color: #555;
-        }
+      .accordion.active,
+      .accordion:hover {
+        background-color: #555;
+      }
 
-        .panel {
-            background-color: #333;
-            padding: 20px;
-            display: none;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            transition: background-color 0.3s, color 0.3s;
-        }
+      .panel {
+        background-color: #333;
+        padding: 20px;
+        display: none;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        transition: background-color 0.3s, color 0.3s;
+      }
 
-        /* Table styling */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
+      /* Table styling */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
 
-        th,
-        td {
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid #444;
-        }
+      th,
+      td {
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #444;
+      }
 
-        th {
-            background-color: #222;
-            color: #aaa;
-        }
+      th {
+        background-color: #222;
+        color: #aaa;
+      }
 
-        /* Styled Icons */
-        .icon-btn {
-            font-size: 24px;
-            border: none;
-            background: none;
-            color: #aaa;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
+      /* Styled Icons */
+      .icon-btn {
+        font-size: 24px;
+        border: none;
+        background: none;
+        color: #aaa;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
 
-        .icon-btn:hover {
-            color: #ff9800;
-        }
+      .icon-btn:hover {
+        color: #ff9800;
+      }
 
-        /* Custom Checkbox styling */
-        .custom-checkbox {
-            appearance: none;
-            background-color: #333;
-            border: 2px solid #555;
-            padding: 10px;
-            width: 24px;
-            height: 24px;
-            border-radius: 4px;
-            display: inline-block;
-            position: relative;
-            cursor: pointer;
-        }
+      /* Custom Checkbox styling */
+      .custom-checkbox {
+        appearance: none;
+        background-color: #333;
+        border: 2px solid #555;
+        padding: 10px;
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+      }
 
-        .custom-checkbox:checked {
-            background-color: #4CAF50;
-            border: none;
-        }
+      .custom-checkbox:checked {
+        background-color: #4caf50;
+        border: none;
+      }
 
-        .custom-checkbox:checked::before {
-            content: '✓';
-            position: absolute;
-            top: 0;
-            left: 5px;
-            color: white;
-            font-weight: bold;
-        }
+      .custom-checkbox:checked::before {
+        content: "✓";
+        position: absolute;
+        top: 0;
+        left: 5px;
+        color: white;
+        font-weight: bold;
+      }
 
-        /* YouTube icon styling for multiple videos */
-        .youtube-icons {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
+      /* YouTube icon styling for multiple videos */
+      .youtube-icons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
 
-        /* Full-width video overlay */
-        #video-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
+      /* Full-width video overlay */
+      #video-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
 
-        #video-frame {
-            width: 80%;
-            height: 60%;
-            border-radius: 10px;
-        }
+      #video-frame {
+        width: 80%;
+        height: 60%;
+        border-radius: 10px;
+      }
 
-        #close-video {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #444;
-            color: #fff;
-            font-size: 24px;
-            border: none;
-            cursor: pointer;
-        }
-#icon:hover{
-    cursor: pointer;
-}
-        /* Light mode styles */
-        .lightmode {
-            background-color: #ffffff;
-            color: #000000;
-        }
+      #close-video {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: #444;
+        color: #fff;
+        font-size: 24px;
+        border: none;
+        cursor: pointer;
+      }
+      #icon:hover {
+        cursor: pointer;
+      }
+      /* Light mode styles */
+      .lightmode {
+        background-color: #ffffff;
+        color: #000000;
+      }
 
-        .lightmode nav {
-            background-color: #f0f0f0;
-        }
+      .lightmode nav {
+        background-color: #f0f0f0;
+      }
 
-        .lightmode .accordion {
-            background-color: #f9f9f9;
-            color: #000000;
-        }
+      .lightmode .accordion {
+        background-color: #f9f9f9;
+        color: #000000;
+      }
 
-        .lightmode .accordion.active,
-        .lightmode .accordion:hover {
-            background-color: #e0e0e0;
-        }
+      .lightmode .accordion.active,
+      .lightmode .accordion:hover {
+        background-color: #e0e0e0;
+      }
 
-        .lightmode .panel {
-            background-color: #f2f2f2;
-            color: #000000;
-        }
-        .summarizer a{
-            text-decoration: none;
-            color: white;
-        }
+      .lightmode .panel {
+        background-color: #f2f2f2;
+        color: #000000;
+      }
+      .summarizer a {
+        text-decoration: none;
+        color: white;
+      }
     </style>
-</head>
-<body>
-
-<div class="flex">
-    <div class="right">
+  </head>
+  <body>
+    <div class="flex">
+      <div class="right">
         <nav>
-            <div>
-                <button onclick="openChatbot()">Chatbot</button>
-                <button class="summarizer"><a href="/summarize">Summarize</a></button>
-                <button><a href="/logout" class="logout">Logout</a></button>
-                <span onclick="toggleDarkMode()" id="icon">☀️</span>
-            </div>
+          <div>
+            <button onclick="openChatbot()">Chatbot</button>
+            <button class="summarizer">
+              <a href="/summarize">Summarize</a>
+            </button>
+            <button><a href="/logout" class="logout">Logout</a></button>
+            <span onclick="toggleDarkMode()" id="icon">☀️</span>
+          </div>
         </nav>
 
         <h1>Welcome <%= user.name %></h1>
-        <p>Our website Digital Guide provides you with <%=user.domainOfInterest %> tutorials, perfect for learning and skill development.</p>
+        <p>
+          Our Digital Guide provides you with <%=user.domainOfInterest %>
+          tutorials, perfect for learning and skill development.
+        </p>
+
+        <!-- Progress Bar -->
+        <div
+          class="flex justify-center items-start"
+          style="margin-top: 3rem; height: auto"
+        >
+          <div
+            style="
+              background-color: #444;
+              padding: 1rem;
+              border-radius: 8px;
+              width: 100%;
+              max-width: 400px;
+              color: #fff;
+            "
+          >
+            <div
+              style="
+                font-size: 1.2rem;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+              "
+            >
+              Your Progress:
+            </div>
+            <p
+              id="completed-count"
+              style="font-size: 1rem; margin-bottom: 0.5rem"
+            >
+              <%= completedTopics %> out of <%= totalTopics %> topics completed
+            </p>
+            <div
+              style="
+                background-color: #666;
+                border-radius: 5px;
+                overflow: hidden;
+                height: 24px;
+                width: 100%;
+              "
+            >
+              <div
+                id="progress-bar"
+                style="
+                  width: <%= (completedTopics / totalTopics) * 100 %>%;
+                  background-color: #4caf50;
+                  height: 100%;
+                  text-align: center;
+                  line-height: 24px;
+                  color: white;
+                  font-size: 0.9rem;
+                  font-weight: bold;
+                "
+              >
+                <%= Math.round((completedTopics / totalTopics) * 100) %>%
+                complete
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Accordion section for each day's content -->
-        <% arrayToRender.forEach(dayContent => { %>
-            <button class="accordion">Day <%= dayContent.day %>: <%= dayContent.topic %></button>
-            <div class="panel">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Status</th>
-                            <th>Topic</th>
-                            <th>Article</th>
-                            <th>YouTube</th>
-                            <th>Practice</th>
-                            <th>Note</th>
-                            <th>Difficulty</th>
-                            <th>Revision</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="checkbox" class="custom-checkbox"></td>
-                            <td><%= dayContent.topic %></td>
-                            <td><a href="<%= dayContent.article %>" target="_blank"><i class="fa fa-clipboard icon-btn"></i></a></td>
-                            <td class="youtube-icons">
-                                <% dayContent.videolink.forEach(link => { %>
-                                    <span onclick="openVideo('<%= link %>')"><i class="fa fa-youtube-play icon-btn" style="color: red; font-size: 34px;"></i></span>
-                                <% }) %>
-                            </td>
-                            <td>
-                                <% if (dayContent.practice) { %>
-                                    <a href="<%= dayContent.practice %>" target="_blank"><i class="fa fa-link icon-btn"></i></a>
-                                <% } else { %>
-                                    <i class="fa fa-ban icon-btn" title="Not available"></i>
-                                <% } %>
-                            </td>
-                            <td><button class="icon-btn"><i class="fa fa-pencil"></i></button></td>
-                            <td><span class="difficulty medium">Medium</span></td>
-                            <td><button class="icon-btn"><i class="fa fa-star"></i></button></td>
-                        </tr>
-                    </tbody>
-                    
-                </table>
-            </div>
+        <% arrayToRender.forEach((dayContent, index) => { %>
+        <button class="accordion">
+          Day <%= dayContent.day %>: <%= dayContent.topic %>
+        </button>
+        <div class="panel">
+          <table>
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Topic</th>
+                <th>Article</th>
+                <th>YouTube</th>
+                <th>Practice</th>
+                <th>Note</th>
+                <th>Difficulty</th>
+                <th>Revision</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input type="checkbox" class="custom-checkbox"
+                  onchange="updateProgress(this)" data-id="<%=
+                  user.domainOfInterest.replace(/\s+/g, '') + '-' + index %>"
+                  <%=
+                  user.topicsCompleted.includes(user.domainOfInterest.replace(/\s+/g,
+                  '') + '-' + index) ? 'checked' : '' %> />
+                </td>
+                <td><%= dayContent.topic %></td>
+                <td>
+                  <a href="<%= dayContent.article %>" target="_blank"
+                    ><i class="fa fa-clipboard icon-btn"></i
+                  ></a>
+                </td>
+                <td class="youtube-icons">
+                  <% dayContent.videolink.forEach(link => { %>
+                  <span onclick="openVideo('<%= link %>')"
+                    ><i
+                      class="fa fa-youtube-play icon-btn"
+                      style="color: red; font-size: 34px"
+                    ></i
+                  ></span>
+                  <% }) %>
+                </td>
+                <td>
+                  <% if (dayContent.practice) { %>
+                  <a href="<%= dayContent.practice %>" target="_blank"
+                    ><i class="fa fa-link icon-btn"></i
+                  ></a>
+                  <% } else { %>
+                  <i class="fa fa-ban icon-btn" title="Not available"></i>
+                  <% } %>
+                </td>
+                <td>
+                  <button class="icon-btn"><i class="fa fa-pencil"></i></button>
+                </td>
+                <td><span class="difficulty medium">Medium</span></td>
+                <td>
+                  <button class="icon-btn">
+                    <i class="fa fa-star"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <% }) %>
+      </div>
     </div>
-</div>
 
-<!-- Full-width video overlay -->
-<div id="video-overlay">
-    <button id="close-video" onclick="closeVideo()">✖</button>
-    <iframe id="video-frame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+    <!-- Full-width video overlay -->
+    <div id="video-overlay">
+      <button id="close-video" onclick="closeVideo()">✖</button>
+      <iframe
+        id="video-frame"
+        src=""
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
 
-<script>
-    // Toggle dark mode
-    function toggleDarkMode() {
+    <script>
+      // Toggle dark mode
+      function toggleDarkMode() {
         document.body.classList.toggle("lightmode");
         const icon = document.getElementById("icon");
-        icon.textContent = document.body.classList.contains("lightmode") ? "🌙" : "☀️";
+        icon.textContent = document.body.classList.contains("lightmode")
+          ? "🌙"
+          : "☀️";
 
         // Toggle accordion and panel styles for light mode
         const accordions = document.getElementsByClassName("accordion");
         const panels = document.getElementsByClassName("panel");
-        
+
         for (let accordion of accordions) {
-            accordion.classList.toggle("lightmode");
+          accordion.classList.toggle("lightmode");
         }
         for (let panel of panels) {
-            panel.classList.toggle("lightmode");
+          panel.classList.toggle("lightmode");
         }
-    }
+      }
 
-    // Open chatbot in new window
-    function openChatbot() {
-          window.open('http://localhost:5000'); // Open the chatbot UI
-           
+      // Open chatbot in new window
+      function openChatbot() {
+        window.open("http://localhost:5000"); // Open the chatbot UI
+      }
 
-}
-
-    // Accordion toggle function
-    const acc = document.getElementsByClassName("accordion");
-    for (let i = 0; i < acc.length; i++) {
+      // Accordion toggle function
+      const acc = document.getElementsByClassName("accordion");
+      for (let i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            const panel = this.nextElementSibling;
-            panel.style.display = panel.style.display === "block" ? "none" : "block";
+          this.classList.toggle("active");
+          const panel = this.nextElementSibling;
+          panel.style.display =
+            panel.style.display === "block" ? "none" : "block";
         });
-    }
+      }
 
-    // Open video overlay
-    function openVideo(videoLink) {
+      // Open video overlay
+      function openVideo(videoLink) {
         document.getElementById("video-overlay").style.display = "flex";
         document.getElementById("video-frame").src = videoLink;
-    }
+      }
 
-    // Close video overlay
-    function closeVideo() {
+      // Close video overlay
+      function closeVideo() {
         document.getElementById("video-overlay").style.display = "none";
         document.getElementById("video-frame").src = "";
-    }
-</script>
+      }
 
-</body>
+      // Update on MongoDB when checkbox is toggled
+      document.querySelectorAll(".custom-checkbox").forEach((checkbox) => {
+        checkbox.addEventListener("change", async (event) => {
+          const topicId = event.target.getAttribute("data-id");
+          const isChecked = event.target.checked;
+
+          try {
+            const response = await fetch("/update-topic-status", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ topicId, isChecked }),
+            });
+            const result = await response.json();
+            console.log(result.message);
+          } catch (error) {
+            console.error("Error updating topic:", error);
+          }
+        });
+      });
+
+      // update Progress Bar when checkBox change
+      function updateProgress(checkbox) {
+        const checkboxes = document.querySelectorAll(".custom-checkbox");
+
+        const completedTopics = Array.from(checkboxes).filter(
+          (cb) => cb.checked
+        ).length;
+
+        const totalTopics = checkboxes.length;
+
+        const progressPercentage = (completedTopics / totalTopics) * 100;
+
+        const progressBar = document.getElementById("progress-bar");
+        progressBar.style.width = progressPercentage + "%";
+        progressBar.textContent = Math.round(progressPercentage) + "%";
+
+        document.getElementById(
+          "completed-count"
+        ).textContent = `${completedTopics} out of ${totalTopics} topics completed`;
+      }
+    </script>
+  </body>
 </html>
