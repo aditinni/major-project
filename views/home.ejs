@@ -9,10 +9,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Quicksand:wght@300..700&family=Teko:wght@300..700&display=swap');
       /* Base styling */
       body {
         font-family: Arial, sans-serif;
-        background-color: #121212;
+        background-color: #111111;
         color: #ffffff;
         transition: background-color 0.3s, color 0.3s;
       }
@@ -31,12 +32,13 @@
       /* Navbar and header */
       nav {
         display: flex;
-        justify-content: space-between;
+        justify-content:end;
         align-items: center;
         padding: 10px;
-        background-color: #333;
-        border-radius: 8px;
+        background-color: #0f0f0f;
+    
         margin-bottom: 20px;
+        border-bottom: 2px solid #555;
       }
 
       nav button,
@@ -57,12 +59,13 @@
 
       /* Accordion styling */
       .accordion {
-        background-color: #444;
+        background-color:#191919;
+
         color: white;
         cursor: pointer;
         padding: 15px;
         width: 100%;
-        border: none;
+        border: 1px solid  #555;
         text-align: left;
         outline: none;
         font-size: 18px;
@@ -73,8 +76,11 @@
 
       .accordion.active,
       .accordion:hover {
-        background-color: #555;
+        background-color: #2c2323;
+        transform: none;
       }
+      
+      
 
       .panel {
         background-color: #333;
@@ -116,6 +122,7 @@
 
       .icon-btn:hover {
         color: #ff9800;
+        background-color: transparent;
       }
 
       /* Custom Checkbox styling */
@@ -214,19 +221,239 @@
         text-decoration: none;
         color: white;
       }
+       
+
+    /* Sidebar styling */
+    .sidebar {
+      width: 250px;
+      background-color: #111111;
+      color: #fff;
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border-right: 2px solid #555;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar h2 {
+      font-size: 1.5rem;
+      color: #ff9800;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      color: #ddd;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 10px;
+      background-color: #333;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color:#7c2d12;
+      color: #ff9800;
+    }
+
+    .sidebar a i {
+      font-size: 1.3rem;
+    }
+
+    /* Adjust the main content to allow space for the sidebar */
+    .right {
+      margin-left: 270px;
+      padding: 20px;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .right {
+        margin-left: 0;
+        padding: 20px;
+      }
+    }
+
+    .sidebar h2{
+      font-family: "Teko", sans-serif;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 20px orange;
+    }
+
+/* Profile icon and dropdown styling */
+.profile-container {
+  position: relative;
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.flex-items{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  gap: 30px;
+
+}
+
+/* Modal Background */
+.note-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+/* Modal Content */
+.note-modal .modal-content {
+  background-color: #333;
+  margin: 15% auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 50%; /* Adjust width */
+  max-width: 500px;
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-out;
+}
+
+/* Close Button */
+.note-modal .close-modal {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.note-modal .close-modal:hover,
+.note-modal .close-modal:focus {
+  color: #ff9800;
+}
+
+/* Textarea Styling */
+#note-textarea:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+}
+
+/* Button Styling */
+button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+
+
     </style>
   </head>
   <body>
+
+<!-- Modal for Adding Notes -->
+<div id="note-modal" class="note-modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeNoteModal()">&times;</span>
+    <h2 id="modal-topic-title" style="font-family: 'Teko', sans-serif; font-size: 1.8rem; color: #ff9800; text-align: center;" ></h2>
+    <form action="/notes" method="post">
+
+      <input type="text" name="topic" placeholder="Enter Topic" style="
+      width: 93%;
+      padding: 15px;
+      font-size: 1rem;
+      font-family: 'Quicksand', sans-serif;
+      border-radius: 10px;
+      border: 2px solid #555;
+      background-color: #222;
+      color: white;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      resize: none;
+      margin: 10px 0px;
+    " required>
+    
+      <textarea id="note-textarea" placeholder="Add your note here..." rows="8" style="
+        width: 93%;
+        padding: 15px;
+        font-size: 1rem;
+        font-family: 'Quicksand', sans-serif;
+        border-radius: 10px;
+        border: 2px solid #555;
+        background-color: #222;
+        color: white;
+        resize: none;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      " name="notes" required></textarea>
+      <button type="submit" style="
+        margin-top: 20px;
+        padding: 12px 25px;
+        background-color: #d26e09;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      ">Save Note</button>
+    </form>
+  
+  </div>
+</div>
+
+  
+ <!-- Sidebar Section -->
+ <div class="sidebar" id="sidebar">
+  <h2 style="text-align: center;">DIGITAL GUIDE</h2>
+  <a href="#" onclick="openChatbot()">
+    <i class="fa fa-comments"></i> Chatbot
+  </a>
+  <a href="/summarize">
+    <i class="fa fa-file-text"></i> Text Summarizer
+  </a>
+  <a href="/video-summarizer">
+    <i class="fa fa-video-camera"></i> Video Summarizer
+  </a>
+</div>
+
     <div class="flex">
       <div class="right">
         <nav>
-          <div>
-            <button onclick="openChatbot()">Chatbot</button>
-            <button class="summarizer">
-              <a href="/summarize">Summarize</a>
-            </button>
-            <button><a href="/logout" class="logout">Logout</a></button>
+          <div class="flex-items">
+           <a href="/logout" class="logout"><i class="fa fa-sign-out" style="color: rgb(156, 149, 149); font-size: 24px;"></i></a>
             <span onclick="toggleDarkMode()" id="icon">☀️</span>
+            
+            <!-- Profile Icon with Dropdown -->
+            <div class="profile-container">
+             <a href="/profile" style="color: rgb(156, 149, 149);; font-size:24px ;"> <i class="fa fa-user-circle profile-icon"></i></a>
+            </div>
           </div>
         </nav>
 
@@ -238,16 +465,17 @@
 
         <!-- Progress Bar -->
         <div
-          class="flex justify-center items-start"
+          class="justify-center items-start"
           style="margin-top: 3rem; height: auto"
         >
           <div
             style="
-              background-color: #444;
+              background-color: #0f0f0f;
               padding: 1rem;
               border-radius: 8px;
               width: 100%;
               max-width: 400px;
+              border: 2px solid #555;
               color: #fff;
             "
           >
@@ -268,7 +496,7 @@
             </p>
             <div
               style="
-                background-color: #666;
+                background-color: #212121;
                 border-radius: 5px;
                 overflow: hidden;
                 height: 24px;
@@ -335,7 +563,7 @@
                   <span onclick="openVideo('<%= link %>')"
                     ><i
                       class="fa fa-youtube-play icon-btn"
-                      style="color: red; font-size: 34px"
+                      style="color: red; font-size: 36px"
                     ></i
                   ></span>
                   <% }) %>
@@ -350,7 +578,7 @@
                   <% } %>
                 </td>
                 <td>
-                  <button class="icon-btn"><i class="fa fa-pencil"></i></button>
+                  <button class="icon-btn"><i class="fa fa-pencil" onclick="openNoteModal('<%=dayContent.topic%>')"></i></button>
                 </td>
                 <td><span class="difficulty medium">Medium</span></td>
                 <td>
@@ -397,6 +625,15 @@
         for (let panel of panels) {
           panel.classList.toggle("lightmode");
         }
+      }
+      //sidebar
+
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        const toggleButton = document.querySelector(".sidebar-toggle");
+        
+        sidebar.classList.toggle("active");
+        toggleButton.classList.toggle("active");
       }
 
       // Open chatbot in new window
@@ -469,6 +706,40 @@
           "completed-count"
         ).textContent = `${completedTopics} out of ${totalTopics} topics completed`;
       }
+
+
+
+
+
+
+// Open the note modal
+function openNoteModal(topic) {
+  document.getElementById('note-modal').style.display = 'flex';
+  document.getElementById('modal-topic-title').textContent = 'Note for ' + topic;
+  document.getElementById('note-textarea').value = ''; // Clear the textarea each time
+}
+
+// Close the note modal
+function closeNoteModal() {
+  document.getElementById('note-modal').style.display = 'none';
+}
+
+// Save the note (this is a simple function, adjust it to save the note data)
+function saveNote() {
+  const noteText = document.getElementById('note-textarea').value;
+  const topic = document.getElementById('modal-topic-title').textContent.replace('Note for ', '');
+  // You can send the note to the server here using fetch or update a database
+
+  // For now, just log it
+  console.log('Note saved for ' + topic + ': ' + noteText);
+
+  // Close the modal after saving
+  closeNoteModal();
+}
+
+
+
+      
     </script>
   </body>
 </html>
