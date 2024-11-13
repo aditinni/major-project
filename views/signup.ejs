@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Digital Guide</title>
     <!-- Google Fonts Link For Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
     <link rel="stylesheet" href="style.css">
+    
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="script.js" defer></script>
     <script src="script.js" defer></script>
@@ -33,21 +34,18 @@ body {
 }
 
 .header {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    padding: 0 10px;
+    
+    width: 100vw;
+ 
 }
 
 .navbar {
     display: flex;
-    padding: 22px 0;
+    height: 80px;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100vw;
     justify-content: space-between;
+    background-color: #1c1b17;
 }
 
 .navbar .hamburger-btn {
@@ -106,21 +104,25 @@ body {
 .navbar .login-btn {
     border: none;
     outline: none;
-    background: #fff;
-    color: #275360;
+    background: #2c2b28;
+    width: 100px;
+    color:white;
     font-size: 1rem;
     font-weight: 600;
-    padding: 10px 18px;
+    padding: 10px 14px;
     border-radius: 3px;
     cursor: pointer;
     transition: 0.15s ease;
-    position: relative;
-    bottom: 20px;
+     position: relative;
+     right: 40px;
+     top: 2px;
+     border-radius: 10px;
     border: 2px solid grey;
 }
 
 .navbar .login-btn:hover {
-    background: #ddd;
+    background:white;
+    color: black;
 }
 
 .form-popup {
@@ -133,7 +135,7 @@ body {
     pointer-events: none;
     max-width: 720px;
     background: #fff;
-    border: 2px solid #fff;
+    border: 2px solid rgb(54, 49, 49);
     transform: translate(-50%, -70%);
 }
 
@@ -188,14 +190,14 @@ body {
 
 .login .form-details {
     padding: 0 40px;
-    background: url("https://static.vecteezy.com/system/resources/previews/001/991/652/original/sign-in-page-flat-design-concept-illustration-icon-account-login-user-login-abstract-metaphor-can-use-for-landing-page-mobile-app-ui-posters-banners-free-vector.jpg");
+    background: url("https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg");
     background-position: center;
     background-size: cover;
 }
 
 .signup .form-details {
     padding: 0 20px;
-    background: url("https://vectorified.com/images/sign-up-icon-14.png");
+    background: url("https://images.pexels.com/photos/6195663/pexels-photo-6195663.jpeg");
     background-position: center;
     background-size: cover;
 }
@@ -229,7 +231,7 @@ form .input-field {
 }
 
 .input-field input:focus {
-    border: 1px solid #00bcd4;
+    border: 1px solid grey;
 }
 
 .input-field label {
@@ -248,12 +250,12 @@ form .input-field {
 
 .input-field input:is(:focus, :valid)~label {
     transform: translateY(-120%);
-    color: #00bcd4;
+    color: grey;
     font-size: 0.75rem;
 }
 
 .form-box a {
-    color: #00bcd4;
+    color: #4a4646;
     text-decoration: none;
 }
 
@@ -278,12 +280,15 @@ form button {
     border-radius: 3px;
     cursor: pointer;
     margin: 25px 0;
-    background: #00bcd4;
+    background:#393937;
+    border-radius: 10px;
     transition: 0.2s ease;
 }
 
 form button:hover {
-    background: #0097a7;
+    background: white;
+    color: #393937;
+    border: 2px solid black;
 }
 
 .form-content .bottom-link {
@@ -389,10 +394,12 @@ form button:hover {
     }
 }
 .section-one{
-    height: 100vh;
+    height: 60vh;
     width: 100vw;
-    background: url("background1.webp");
+   
     background-size: cover;
+    background-color:#383836;
+    border-bottom: 4px solid white;
 }
 .sec-one-flex
 {
@@ -402,34 +409,34 @@ form button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     flex-direction: column;
+   
 }
 .sec-one-flex h1{
     
   font-weight: 400;
   font-style: normal;
   font-size: 30px;
-  color: whitesmoke;
-  text-shadow: 10px 10px 10px  black;
+  color: white;
   letter-spacing: 4px;
   text-align: center;
   font-weight: bolder;
 }
 .section-two{
-    height: 100vh;
+    height: 600px;
     width: 100vw;
-    background:url("section2.webp");
+    background-color:white;
     background-size: cover;
 }
 .section-three{
     height: 80vh;
     width: 100vw;
-    background:url("sectionthree.webp");
+    background-color:#393937;
     background-size: cover;
 }
 .container{
     height: 60%;
     width: 50%;
-    background-color:white ;
+    background-color:#373734 ;
     position: relative;
     top: 50%;
     left: 50%;
@@ -439,10 +446,12 @@ form button:hover {
     align-items: center;
     flex-direction: column;
     gap: 10px;
-    box-shadow:5px 5px black ;
+    border: 2px solid rgb(126, 119, 119);
+    border-radius: 10px;
 }
 .container h1{
     font-weight: 200;
+    color: white;
     
 }
 .inner-container{
@@ -457,6 +466,7 @@ form button:hover {
 .inner-container h3{
     text-align: justify;
     font-weight: lighter;
+    color: white;
    
 }
 .container3{
@@ -509,10 +519,54 @@ form button:hover {
 .section-three h1{
     text-align: center;
     color: whitesmoke;
-    text-shadow: 10px 10px 10px black;
+     position: relative;
+     top: 20px;
     letter-spacing: 4px;
     font-size: 30px;
 }
+
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    padding-top: 30px;
+    position: relative;
+    top: 20%;
+}
+
+.card {
+    background-color: #4a4a4a;
+    color: white;
+    width: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card .icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #f0f0f0;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #c9c9c9;
+}
+
 
 footer{
     width: 100vw;
@@ -527,7 +581,7 @@ footer p{
     <header class="header">
         <nav class="navbar">
             <span class="hamburger-btn material-symbols-rounded">menu</span>
-            <img src="logo_final.png" width="250px">
+            <h1 style="color:white; position: absolute; left: 20px;">Digital Guide</h1>
            
             <ul class="links">
                 <span class="close-btn material-symbols-rounded">close</span>
@@ -563,21 +617,35 @@ footer p{
     </section>
     <section class="section-three">
         <h1>Learning Made Effective</h1>
-        <div class="container3">
-            <img src="sec3back.png" width="90%">
+        <div class="card-container">
+            <div class="card">
+                <div class="icon">📚</div>
+                <h4>Select your topic</h4>
+                <p>Choose the subject or skill you want to learn.</p>
+            </div>
+            <div class="card">
+                <div class="icon">📖</div>
+                <h4>Start learning</h4>
+                <p>Access learning materials tailored to your level.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🔄</div>
+                <h4>Revision-video summarizer</h4>
+                <p>Quickly review key concepts with summarized videos.</p>
+            </div>
+            <div class="card">
+                <div class="icon">📈</div>
+                <h4>Track your progress</h4>
+                <p>Monitor your learning progress and stay on track.</p>
+            </div>
+            <div class="card">
+                <div class="icon">💬</div>
+                <h4>Mental Support by Chatbot</h4>
+                <p>Get help managing stress with our chatbot support.</p>
+            </div>
         </div>
-        <img src="section3.png" class="process">
-        <div class="flex-sec3">
-            <h4 class="topic"> Select your topic</h4>
-        <h4 class="learn">Start learning</h4>
-        <h4 class="revision">Revision-video summarizer</h4>
-        <h4 class="track">Track your progress</h4>
-        <h4 class="mental">Mental Support by Chatbot</h4>
-        </div>
-
-        
-
     </section>
+    
 
 
     <footer>
